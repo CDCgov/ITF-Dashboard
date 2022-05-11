@@ -5,14 +5,14 @@ function(rfunctions.dir, df_ncov) {
   
   # Pulling in the load package function R file
   # Load function to install list of packages
-  ldpkg <- dget(paste0(rfunctions.dir, "ldpkg.R"))
+  # ldpkg <- dget(paste0(rfunctions.dir, "ldpkg.R"))
   
-  # Loading the packages
-  ldpkg(c("tidyverse",
-          "zoo",
-          "passport",
-          "stringr",
-          "SaviR"))
+  # # Loading the packages
+  # ldpkg(c("tidyverse",
+  #         "zoo",
+  #         "passport",
+  #         "stringr",
+  #         "SaviR"))
 
   # If NCOV base dataframe is missing as input, then call the script to generate it
   if (missing(df_ncov)) {

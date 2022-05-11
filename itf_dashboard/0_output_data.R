@@ -6,7 +6,7 @@ library(data.table)
 library(SaviR)
 
 # Path to all local R functions
-rfunctions.dir <- "R"
+rfunctions.dir <- "R/"
 
 # Root for this project
 root.dir <- "itf_dashboard/"
@@ -14,6 +14,7 @@ root.dir <- "itf_dashboard/"
 # Output directory to write data
 output.dir <- paste0(root.dir, "output/")
 
+source(file.path(rfunctions.dir, "packages_for_Power_BI.R"))
 
 #country data ----
 # BUG: Data source is gone. This needs to be offloaded to SaviR

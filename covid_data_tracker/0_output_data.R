@@ -1,7 +1,7 @@
 #Code to generate CSVs ITF Power BI CDC COVID Tracker Views
 
 # Path to all local R functions
-rfunctions.dir <- "R"
+rfunctions.dir <- "R/"
 
 # Root for this project
 dir.root <- "covid_data_tracker/"

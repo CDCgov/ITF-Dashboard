@@ -9,16 +9,16 @@ function(rfunctions.dir) {
   
   # Pulling in the load package function R file
   # Load function to install list of packages
-  ldpkg <- dget(paste0(rfunctions.dir, "ldpkg.R"))
+  # ldpkg <- dget(paste0(rfunctions.dir, "ldpkg.R"))
   
-  # Loading the packages
-  ldpkg(c("Hmisc", 
-          "tidyverse",
-          "dplyr",
-          "openxlsx",
-          "passport",
-          "readxl",
-          "zoo"))
+  # # Loading the packages
+  # ldpkg(c("Hmisc", 
+  #         "tidyverse",
+  #         "dplyr",
+  #         "openxlsx",
+  #         "passport",
+  #         "readxl",
+  #         "zoo"))
   
   
   

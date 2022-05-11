@@ -20,13 +20,13 @@ function(rfunctions.dir, df_country){
   
   # Pulling in the load package function R file
   # Load function to install list of packages
-  ldpkg <- dget(paste0(rfunctions.dir, "ldpkg.R"))
+  # ldpkg <- dget(paste0(rfunctions.dir, "ldpkg.R"))
   
-  # Loading the packages
-  ldpkg(c("maps", 
-          "tidyverse",
-          "countrycode",
-          "passport"))
+  # # Loading the packages
+  # ldpkg(c("maps", 
+  #         "tidyverse",
+  #         "countrycode",
+  #         "passport"))
   
 
   # If country metadata dataframe not present as input, then call the script to generate it

@@ -9,8 +9,8 @@ function(rfunctions.dir, df_jhu, df_who){
 
   # Pulling in the load package function R file
   # Load function to install list of packages
-  ldpkg <- dget(paste0(rfunctions.dir, "ldpkg.R"))
-  ldpkg("tidyverse")
+  # ldpkg <- dget(paste0(rfunctions.dir, "ldpkg.R"))
+  # ldpkg("tidyverse")
   
   # If JHU dataframe is missing as input, then call the script to generate it
   if (missing(df_jhu)) {
