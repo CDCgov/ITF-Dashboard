@@ -9,7 +9,7 @@ library(AzureStor)
 data_lake_path <- Sys.getenv("AZURE_DL_PATH")
 
 # Container Path
-dashboard_folder_path <- "DGHT/ITF-SAVI/Dashboard/"
+dashboard_folder_path <- "DGHT/ITF-SAVI/Dashboard/Internal/"
 
 # Internal CSV files to commit
 files_to_update <- "itf_dashboard/output/*.csv"
