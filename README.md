@@ -1,5 +1,5 @@
 # ITF Dashboard Data Pipeline
-
+[![ITF Internal Dashboard Refresh](https://github.com/CDCgov/ITF-Dashboard/actions/workflows/automated_dashboard_update.yaml/badge.svg)](https://github.com/CDCgov/ITF-Dashboard/actions/workflows/automated_dashboard_update.yaml)
 
 This document has completed governance review per local and agency processes. This material is a draft.
 
