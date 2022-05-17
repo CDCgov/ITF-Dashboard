@@ -38,19 +38,14 @@ jobs:
         run: |
           source("itf_dashboard/0_output_data.R")
         shell: Rscript {0}
-      - name: Publish to ADLS
-        env:
-          _R_CHECK_CRAN_INCOMING_REMOTE_: false
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          AZURE_APP_ID: ${{ secrets.AZURE_APP_ID }}
-          AZURE_APP_SECRET: ${{ secrets.AZURE_APP_SECRET }}
-          AZURE_DL_PATH: ${{ secrets.AZURE_DL_PATH }}
-        run: |
-          source("itf_dashboard/1_export_data.R")
-        shell: Rscript {0}
+      # Upload results for later
+      - uses: actions/upload-artifact@v3
+        with:
+        name: itf-dashboard
+        path: itf_dashboard/output/*.csv
+
   covid-data-tracker:
     runs-on: ubuntu-20.04
-    needs: itf-dashboard
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
@@ -77,13 +72,51 @@ jobs:
         run: |
           source("covid_data_tracker/0_output_data.R")
         shell: Rscript {0}
-      - name: Publish to ADLS
+      # Upload results for later
+      - uses: actions/upload-artifact@v3
+        with:
+        name: covid-data-tracker
+        path: covid_data_tracker/output/*.csv
+
+  publish:
+    runs-on: ubuntu-20.04
+    needs: [ itf-dashboard, covid-data-tracker ]
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: "master"
+    - uses: r-lib/actions/setup-pandoc@master
+    - uses: r-lib/actions/setup-r@master
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    - name: Install System Dependencies
+      run: |
+        sudo apt-get install libcurl4-openssl-dev libudunits2-dev libgdal-dev
+        sudo R CMD javareconf
+      shell: bash
+    - uses: r-lib/actions/setup-renv@v2
+      with:
+        cache-version: 2
+    # Download data from the data pull runs
+    - uses: actions/download-artifact@master
+      with:
+        name: itf-dashboard
+        path: itf_dashboard/output/
+    - uses: actions/download-artifact@master
+      with:
+        name: covid-data-tracker
+        path: covid_data_tracker/output/
+    # Publish it to Data Lake
+    - name: Publish to ADLS
         env:
+          _R_CHECK_CRAN_INCOMING_REMOTE_: false
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           AZURE_APP_ID: ${{ secrets.AZURE_APP_ID }}
           AZURE_APP_SECRET: ${{ secrets.AZURE_APP_SECRET }}
           AZURE_DL_PATH: ${{ secrets.AZURE_DL_PATH }}
-          _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: |
-          source("itf_dashboard/1_export_data.R")
+          source(".github/workflows/export_data.R")
         shell: Rscript {0}

@@ -4,15 +4,17 @@
 # =============================================================== #
 library(AzureRMR)
 library(AzureStor)
-
+library(dotenv)
 # Web path to container in data lake
 data_lake_path <- Sys.getenv("AZURE_DL_PATH")
 
 # Container Path
-dashboard_folder_path <- "DGHT/ITF-SAVI/Dashboard/External/"
+internal_dashboard_folder_path <- "DGHT/ITF-SAVI/Dashboard/Internal/"
+external_dashboard_folder_path <- "DGHT/ITF-SAVI/Dashboard/External/"
 
 # Internal CSV files to commit
-files_to_update <- "covid_data_tracker/output/*.csv"
+internal_files_to_update <- "itf_dashboard/output/*.csv"
+external_files_to_update <- "covid_data_tracker/output/*.csv"
 
 # === Azure Data Lake connection ================================
 # Auth with Azure and connect to storage container
@@ -26,4 +28,5 @@ azure_token <- get_azure_token(
 azure_container <- storage_container(data_lake_path, token = azure_token)
 
 # === Upload data to ADLS ========================================
-storage_multiupload(azure_container, files_to_update, dashboard_folder_path)
+storage_multiupload(azure_container, internal_files_to_update, internal_dashboard_folder_path)
+storage_multiupload(azure_container, external_files_to_update, external_dashboard_folder_path)
