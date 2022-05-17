@@ -41,8 +41,8 @@ jobs:
       # Upload results for later
       - uses: actions/upload-artifact@v3
         with:
-        name: itf-dashboard
-        path: itf_dashboard/output/*.csv
+          name: itf-dashboard
+          path: itf_dashboard/output/*.csv
 
   covid-data-tracker:
     runs-on: ubuntu-20.04
@@ -75,8 +75,8 @@ jobs:
       # Upload results for later
       - uses: actions/upload-artifact@v3
         with:
-        name: covid-data-tracker
-        path: covid_data_tracker/output/*.csv
+          name: covid-data-tracker
+          path: covid_data_tracker/output/*.csv
 
   publish:
     runs-on: ubuntu-20.04
@@ -111,12 +111,12 @@ jobs:
         path: covid_data_tracker/output/
     # Publish it to Data Lake
     - name: Publish to ADLS
-        env:
-          _R_CHECK_CRAN_INCOMING_REMOTE_: false
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          AZURE_APP_ID: ${{ secrets.AZURE_APP_ID }}
-          AZURE_APP_SECRET: ${{ secrets.AZURE_APP_SECRET }}
-          AZURE_DL_PATH: ${{ secrets.AZURE_DL_PATH }}
-        run: |
-          source(".github/workflows/export_data.R")
-        shell: Rscript {0}
+      env:
+        _R_CHECK_CRAN_INCOMING_REMOTE_: false
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_APP_ID: ${{ secrets.AZURE_APP_ID }}
+        AZURE_APP_SECRET: ${{ secrets.AZURE_APP_SECRET }}
+        AZURE_DL_PATH: ${{ secrets.AZURE_DL_PATH }}
+      run: |
+        source(".github/workflows/export_data.R")
+      shell: Rscript {0}
