@@ -4,7 +4,6 @@
 # =============================================================== #
 library(AzureRMR)
 library(AzureStor)
-library(dotenv)
 # Web path to container in data lake
 data_lake_path <- Sys.getenv("AZURE_DL_PATH")
 
