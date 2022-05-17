@@ -41,6 +41,10 @@ jobs:
       - name: Publish to ADLS
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_APP_ID: ${{ secrets.AZURE_APP_ID }}
+          AZURE_APP_SECRET: ${{ secrets.AZURE_APP_SECRET }}
+          AZURE_DL_PATH: ${{ secrets.AZURE_DL_PATH }}
         run: |
           source("itf_dashboard/1_export_data.R")
         shell: Rscript {0}
@@ -75,6 +79,10 @@ jobs:
         shell: Rscript {0}
       - name: Publish to ADLS
         env:
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_APP_ID: ${{ secrets.AZURE_APP_ID }}
+          AZURE_APP_SECRET: ${{ secrets.AZURE_APP_SECRET }}
+          AZURE_DL_PATH: ${{ secrets.AZURE_DL_PATH }}
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: |
           source("itf_dashboard/1_export_data.R")
