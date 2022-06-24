@@ -11,6 +11,19 @@ As part of the CDC COVID-19 Response, the ITF Situational Awareness & Visualizat
 
 The ITF has also created several curated Power BI views of global data on the public CDC COVID Data Tracker (https://covid.cdc.gov/covid-data-tracker/#global-counts-rates) to communicate to the general public the types of analyses that CDC is conducting using international data. The code saved to this repository would be used to populate the data underlying those views in a Power BI Dashboard.
 
+## Processing Steps
+
+There are 3 steps in the processing pipeline:  
+1. Pulling and processing data for all internal dashboards [(itf_dashboard/0_output_data.R)](https://github.com/CDCgov/ITF-Dashboard/blob/master/itf_dashboard/0_output_data.R)
+1. Pulling and processing data for all external dashboards [(covid_data_tracker/0_output_data.R)](https://github.com/CDCgov/ITF-Dashboard/blob/master/covid_data_tracker/0_output_data.R)
+1. Writing out data to Azure Data Lake [(export_data.R)](https://github.com/CDCgov/ITF-Dashboard/blob/master/.github/workflows/export_data.R)
+
+The GitHub Actions (GHA) workflow runs the first two at the same time and waits until they're complete to run the last one.
+
+- **Running the pipeline manually, you should ensure that you've run the first two data pull steps before attempting to export.** 
+
+- If the data export script is successful, you should be able to see the files in Data Lake with an updated timestamp.  
+
 ## GitHub Actions Workflow
 
 ### Scheduling
@@ -23,7 +36,7 @@ The update process is scheduled for 1935 UTC (1535 EDT) Monday Thru Friday.
 
 ### Altering the Workflow
 
-By default, the Github Action (GHA) workflow runs the three R scripts mentioned above, and any changes made to those scripts on the master branch will automatically propagate to the workflow.  
+By default, the Github Action workflow runs the three R scripts mentioned above, and any changes made to those scripts on the master branch will automatically propagate to the workflow.  
 
 - If you need to add an additional step, or modify the workflow for any reason, the process is defined in: [.github/workflows/automated_dashboard_update.yaml](https://github.com/CDCgov/ITF-Dashboard/blob/master/.github/workflows/automated_dashboard_update.yaml).  
 
@@ -85,18 +98,6 @@ AZURE_APP_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXX-XXXXXXXX
 - If you need assistance with this step, please contact the ITF-SAVI Team to request the .Renviron file.
 - [Read more about .Renviron files here](https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf)
 
-### Processing Steps
-
-There are 3 steps in the processing pipeline:  
-1. Pulling and processing data for all internal dashboards [(itf_dashboard/0_output_data.R)](https://github.com/CDCgov/ITF-Dashboard/blob/master/itf_dashboard/0_output_data.R)
-1. Pulling and processing data for all external dashboards [(covid_data_tracker/0_output_data.R)](https://github.com/CDCgov/ITF-Dashboard/blob/master/covid_data_tracker/0_output_data.R)
-1. Writing out data to Azure Data Lake [(export_data.R)](https://github.com/CDCgov/ITF-Dashboard/blob/master/.github/workflows/export_data.R)
-
-The GitHub Actions workflow runs the first two at the same time and waits until they're complete to run the last one.
-
-- **Running the pipeline manually, you should ensure that you've run the first two data pull steps before attempting to export.** 
-
-- If the data export script is successful, you should be able to see the files in Data Lake with an updated timestamp.  
 
 ### Data sources referenced:
 The project uses several publicly-available data sources, including:
