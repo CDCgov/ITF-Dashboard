@@ -71,8 +71,8 @@ The final write-out process requires an Azure Service Principle to transfer file
 
 #### Passing Data Lake Credentials via Environment Var
 
-If you run this locally, you'll need to **create a .env file in the root directory**.  
-The .env file contains environmental variables needed to connect and write files to the Data Lake.
+If you run this locally, you'll need to **create a .Renviron file in the root directory**.  
+The .Renviron file contains environmental variables needed to connect and write files to the Data Lake.
 
 The file should be parsed line-by-line and expected to have the following format:
 ```
@@ -82,7 +82,8 @@ AZURE_APP_ID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 AZURE_APP_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXX-XXXXXXXX
 ```
 
-- If you need assistance with this step, please contact the ITF-SAVI Team to request the .env file.
+- If you need assistance with this step, please contact the ITF-SAVI Team to request the .Renviron file.
+- [Read more about .Renviron files here](https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf)
 
 ### Processing Steps
 
