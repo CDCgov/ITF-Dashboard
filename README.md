@@ -23,7 +23,7 @@ The update process is scheduled for 1935 UTC (1535 EDT) Monday Thru Friday.
 
 ### Altering the Workflow
 
-By default, the GHA workflow runs the three R scripts mentioned above, and any changes made to those scripts on the master branch will automatically propagate to the workflow.  
+By default, the Github Action (GHA) workflow runs the three R scripts mentioned above, and any changes made to those scripts on the master branch will automatically propagate to the workflow.  
 
 - If you need to add an additional step, or modify the workflow for any reason, the process is defined in: [.github/workflows/automated_dashboard_update.yaml](https://github.com/CDCgov/ITF-Dashboard/blob/master/.github/workflows/automated_dashboard_update.yaml).  
 
@@ -31,7 +31,7 @@ By default, the GHA workflow runs the three R scripts mentioned above, and any c
 
 ### Debugging the Workflow
 
-Occasionally, the GHA workflow will encounter and error during processing.  
+Occasionally, the GHA workflow will encounter an error during processing.  
 
 - [You should be able to check the status of the workflow here](https://github.com/CDCgov/ITF-Dashboard/actions/workflows/automated_dashboard_update.yaml).  
 
