@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.1.2",
+    "Version": "4.1.3",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -56,10 +56,10 @@
     },
     "AzureStor": {
       "Package": "AzureStor",
-      "Version": "3.6.0",
+      "Version": "3.7.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "63f835d3cc1cfd85649d4629a1c7664c",
+      "Hash": "ddb01acbe698467420adec8580198916",
       "Requirements": [
         "AzureRMR",
         "R6",
@@ -143,12 +143,12 @@
       "Version": "0.2.0",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "SaviR",
       "RemoteUsername": "CDCGoV",
+      "RemoteRepo": "SaviR",
       "RemoteRef": "HEAD",
-      "RemoteSha": "340fb683cc8574231c592a485491e94083b1d9fe",
-      "Hash": "d87170464bf26b4403a39a72131b2389",
+      "RemoteSha": "5589aae8409c26b48c3ad8f50097156f06042338",
+      "RemoteHost": "api.github.com",
+      "Hash": "08c45d91a28495c066202bdc22461e67",
       "Requirements": [
         "RcppRoll",
         "bit64",
@@ -315,16 +315,6 @@
         "tibble"
       ]
     },
-    "checkmate": {
-      "Package": "checkmate",
-      "Version": "2.0.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "a667800d5f0350371bedeb8b8b950289",
-      "Requirements": [
-        "backports"
-      ]
-    },
     "class": {
       "Package": "class",
       "Version": "7.3-19",
@@ -349,13 +339,11 @@
     },
     "cli": {
       "Package": "cli",
-      "Version": "3.1.0",
+      "Version": "3.4.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "66a3834e54593c89d8beefb312347e58",
-      "Requirements": [
-        "glue"
-      ]
+      "Hash": "78003c09d258968a4d28107e779edb10",
+      "Requirements": []
     },
     "clipr": {
       "Package": "clipr",
@@ -375,10 +363,10 @@
     },
     "commonmark": {
       "Package": "commonmark",
-      "Version": "1.7",
+      "Version": "1.8.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "0f22be39ec1d141fd03683c06f3a6e67",
+      "Hash": "2ba81b120c1655ab696c935ef33ea716",
       "Requirements": []
     },
     "cpp11": {
@@ -701,14 +689,14 @@
     },
     "gt": {
       "Package": "gt",
-      "Version": "0.4.0",
+      "Version": "0.7.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "4905765870343c66704c9e495e4e3bc0",
+      "Hash": "b6f71436ae6088b9a773a5253217ade1",
       "Requirements": [
         "base64enc",
         "bitops",
-        "checkmate",
+        "cli",
         "commonmark",
         "dplyr",
         "fs",
@@ -1134,14 +1122,14 @@
       "Package": "readxl",
       "Version": "1.3.1.9000",
       "Source": "GitHub",
-      "Remotes": "r-lib/cpp11",
       "RemoteType": "github",
+      "Remotes": "r-lib/cpp11",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "readxl",
       "RemoteUsername": "tidyverse",
       "RemoteRef": "HEAD",
       "RemoteSha": "895ccb494846249a4e771c8087a53e90b5a65283",
-      "Hash": "0c7d6b885e152371b94ce2d06cf4c62b",
+      "Hash": "2f441ac165f60ba616882e343b330085",
       "Requirements": [
         "cellranger",
         "cpp11",
@@ -1268,10 +1256,10 @@
     },
     "sass": {
       "Package": "sass",
-      "Version": "0.4.0",
+      "Version": "0.4.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "50cf822feb64bb3977bda0b7091be623",
+      "Hash": "1b191143d7d3444d504277843f3a95fe",
       "Requirements": [
         "R6",
         "fs",
@@ -1282,10 +1270,10 @@
     },
     "scales": {
       "Package": "scales",
-      "Version": "1.1.1",
+      "Version": "1.2.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "6f76f71042411426ec8df6c54f34e6dd",
+      "Hash": "906cb23d2f1c5680b8ce439b44c6fa63",
       "Requirements": [
         "R6",
         "RColorBrewer",
@@ -1293,6 +1281,7 @@
         "labeling",
         "lifecycle",
         "munsell",
+        "rlang",
         "viridisLite"
       ]
     },
