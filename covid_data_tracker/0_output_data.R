@@ -27,10 +27,13 @@ df_country_date <- fun_country_date(rfunctions.dir, country_data)
 write_csv(df_country_date,paste0(out.dir,"lookup_country_date.csv"),na="")
 
 # get the base jhu and who dataframes
-fun_jhu <- dget(paste0(rfunctions.dir, "get_jhu_data.R"))
-df_jhu <- fun_jhu(rfunctions.dir, df_country_date)
 fun_who <- dget(paste0(rfunctions.dir, "get_who_data.R"))
 df_who <- fun_who(rfunctions.dir, df_country_date)
+who.max.date <- max(df_who$date, na.rm=T)
+fun_jhu <- dget(paste0(rfunctions.dir, "get_jhu_data.R"))
+df_jhu <- fun_jhu(rfunctions.dir, df_country_date)
+df_jhu <- df_jhu %>% filter(date <= who.max.date)
+
 
 
 #read in datasets that are input data for subsequent functions
