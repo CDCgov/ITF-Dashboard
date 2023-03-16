@@ -133,9 +133,8 @@ df_ncov <- savi_coviddf %>%
 # pulling directly from FIND data source
 testing1<-SaviR:::get_find_testing_long() %>%
 #  select(iso_code,date,positive_rate,new_tests,total_tests,new_tests_smoothed_per_thousand,new_tests_per_thousand,tests_per_case) %>%
-  select(id,date,positive_rate_7day,new_tests_original,total_tests_original,new_tests_daily7,new_tests_daily7_per_1k) %>%
+  select(id,date,new_tests_original,total_tests_original,new_tests_daily7_per_1k) %>%
   rename(iso_code = id,
-         positive_rate = positive_rate_7day,
          new_tests = new_tests_original,
          total_tests = total_tests_original,
          new_tests_smoothed_per_thousand = new_tests_daily7_per_1k,
