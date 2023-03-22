@@ -130,14 +130,17 @@ df_ncov <- savi_coviddf %>%
 #   select(iso_code,date,positive_rate_7day,new_tests_original,new_tests_daily7,new_tests_daily7_per_1k,tests_per_case)
 # #SaviR doesn't bring in tests_per_case
 
-# pulling directly from OWID because we need tests_per_case
-owid_test_source = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
-testing1<-data.table::fread(owid_test_source, data.table = F, showProgress = F, verbose = F) %>%
-  select(iso_code,date,positive_rate,new_tests,total_tests,new_tests_smoothed_per_thousand,new_tests_per_thousand,tests_per_case) %>%
-  mutate(iso_code = recode(iso_code, "OWID_KOS" = "XKX")) %>%
-  filter(!grepl("OWID", iso_code)) 
+# pulling directly from FIND data source
+testing1<-SaviR:::get_find_testing_long() %>%
+#  select(iso_code,date,positive_rate,new_tests,total_tests,new_tests_smoothed_per_thousand,new_tests_per_thousand,tests_per_case) %>%
+  select(id,date,new_tests_original,total_tests_original,new_tests_daily7_per_1k) %>%
+  rename(iso_code = id,
+         new_tests = new_tests_original,
+         total_tests = total_tests_original,
+         new_tests_smoothed_per_thousand = new_tests_daily7_per_1k,
+         ) 
 
-data.table::fwrite(testing1, paste0(output.dir, "owid_testing.csv"), na="", row.names=FALSE)
+data.table::fwrite(testing1, paste0(output.dir, "find_testing.csv"), na="", row.names=FALSE)
 
 
 #vaccine data for Summary page- Internal DB source  -----
