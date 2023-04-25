@@ -4,16 +4,17 @@ hospdata_combine<-function(){
     #read in data
   owid_data<-fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/hospitalizations/covid-hospitalizations.csv") %>%
     select(-entity) %>%
-    mutate(source="OWID")
+    mutate(source="OWID", date = as.Date(date))
+  
   ecdc_data<-fread("https://opendata.ecdc.europa.eu/covid19/hospitalicuadmissionrates/csv/data.csv") %>%
     mutate(iso_code=passport::parse_country(country,to = "iso3c")) %>%
     select(-source,-url,-year_week,-country) %>%
-    mutate(source="ECDC")
+    mutate(source="ECDC", date = as.Date(date))
   #add and mutate other sources so they look like ecdc (i.e. long by date/indicator)
   
   ecdc_indicators<-unique(ecdc_data$indicator)
   owid_indicators<-unique(owid_data$indicator)
-  all_dates <- seq.Date(from=as.Date(min(owid_data$date,ecdc_data$date)), to=as.Date(max(ecdc_data$date,owid_data$date)), by="day")
+  all_dates <- seq.Date(from=as.Date(min(owid_data$date,ecdc_data$date)), to=as.Date(max(ecdc_data$date,owid_data$date, na.rm=TRUE)), by="day")
   
   #append and transform
   hospdata<-bind_rows(ecdc_data,owid_data) 
