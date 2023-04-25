@@ -6,4 +6,5 @@ library(data.table)
 library(tidyverse)
 library(passport)
 library(zoo)
-
+library(AzureRMR)
+library(AzureStor)
