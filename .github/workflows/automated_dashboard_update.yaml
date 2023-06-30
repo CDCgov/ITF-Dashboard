@@ -10,6 +10,7 @@ name: "ITF Internal Dashboard Refresh"
 
 jobs:
   itf-dashboard:
+    runs-on: self-hosted
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
@@ -46,6 +47,7 @@ jobs:
           path: itf_dashboard/output/*.csv
 
   covid-data-tracker:
+    runs-on: self-hosted
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
@@ -82,7 +84,7 @@ jobs:
           path: covid_data_tracker/output/*.csv
 
   publish:
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     needs: [ itf-dashboard, covid-data-tracker ]
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
