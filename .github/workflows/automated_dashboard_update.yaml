@@ -10,8 +10,6 @@ name: "ITF Internal Dashboard Refresh"
 
 jobs:
   itf-dashboard:
-    runs-on: ubuntu-20.04
-
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
@@ -24,11 +22,14 @@ jobs:
         with:
           r-version: '4.2.1'
           use-public-rspm: true
-      - name: Install System Dependencies
-        run: |
-          sudo apt-get install libcurl4-openssl-dev libudunits2-dev libgdal-dev
-          sudo R CMD javareconf
-        shell: bash
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 2
+      # - name: Install System Dependencies
+      #   run: |
+      #     sudo apt-get install libcurl4-openssl-dev libudunits2-dev libgdal-dev
+      #     sudo R CMD javareconf
+      #   shell: bash
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -45,7 +46,6 @@ jobs:
           path: itf_dashboard/output/*.csv
 
   covid-data-tracker:
-    runs-on: ubuntu-20.04
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
@@ -58,11 +58,14 @@ jobs:
         with:
           r-version: '4.2.1'
           use-public-rspm: true
-      - name: Install System Dependencies
-        run: |
-          sudo apt-get install libcurl4-openssl-dev libudunits2-dev libgdal-dev
-          sudo R CMD javareconf
-        shell: bash
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 2
+      # - name: Install System Dependencies
+      #   run: |
+      #     sudo apt-get install libcurl4-openssl-dev libudunits2-dev libgdal-dev
+      #     sudo R CMD javareconf
+      #   shell: bash
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -92,11 +95,14 @@ jobs:
       with:
         r-version: '4.2.1'
         use-public-rspm: true
-    - name: Install System Dependencies
-      run: |
-        sudo apt-get install libcurl4-openssl-dev libudunits2-dev libgdal-dev
-        sudo R CMD javareconf
-      shell: bash
+    - uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        cache-version: 2
+    # - name: Install System Dependencies
+    #   run: |
+    #     sudo apt-get install libcurl4-openssl-dev libudunits2-dev libgdal-dev
+    #     sudo R CMD javareconf
+    #   shell: bash
     - uses: r-lib/actions/setup-renv@v2
       with:
         cache-version: 2
