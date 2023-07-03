@@ -19,7 +19,7 @@ jobs:
         with:
           ref: "master"
       - uses: r-lib/actions/setup-pandoc@v2
-      - uses: beansrowning/actions/setup-r@934ba51
+      - uses: beansrowning/actions/setup-r@934ba5103046beb5e16413b207190fc3af860e73
         with:
           r-version: '4.2.1'
           use-public-rspm: true
@@ -56,7 +56,7 @@ jobs:
         with:
           ref: "master"
       - uses: r-lib/actions/setup-pandoc@v2
-      - uses: beansrowning/actions/setup-r@934ba51
+      - uses: beansrowning/actions/setup-r@934ba5103046beb5e16413b207190fc3af860e73
         with:
           r-version: '4.2.1'
           use-public-rspm: true
@@ -93,7 +93,7 @@ jobs:
       with:
         ref: "master"
     - uses: r-lib/actions/setup-pandoc@v2
-    - uses: beansrowning/actions/setup-r@934ba51
+    - uses: beansrowning/actions/setup-r@934ba5103046beb5e16413b207190fc3af860e73
       with:
         r-version: '4.2.1'
         use-public-rspm: true
