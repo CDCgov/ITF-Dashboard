@@ -19,10 +19,10 @@ jobs:
         with:
           ref: "dev"
       - uses: r-lib/actions/setup-pandoc@v2
-      # - uses: beansrowning/actions/setup-r@c738d3faded4aa50a6f7ac2925f2278f6c5dcf70
-      #   with:
-      #     r-version: '4.2.1'
-      #     use-public-rspm: true
+      - uses: beansrowning/actions/setup-r@c738d3faded4aa50a6f7ac2925f2278f6c5dcf70
+        with:
+          r-version: '4.2.1'
+          use-public-rspm: true
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache-version: 2
@@ -56,10 +56,10 @@ jobs:
         with:
           ref: "dev"
       - uses: r-lib/actions/setup-pandoc@v2
-      # - uses: beansrowning/actions/setup-r@c738d3faded4aa50a6f7ac2925f2278f6c5dcf70
-      #   with:
-      #     r-version: '4.2.1'
-      #     use-public-rspm: true
+      - uses: beansrowning/actions/setup-r@c738d3faded4aa50a6f7ac2925f2278f6c5dcf70
+        with:
+          r-version: '4.2.1'
+          use-public-rspm: true
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache-version: 2
