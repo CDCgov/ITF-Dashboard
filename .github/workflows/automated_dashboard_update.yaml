@@ -19,10 +19,6 @@ jobs:
         with:
           ref: "dev"
       - uses: r-lib/actions/setup-pandoc@v2
-      # - uses: r-lib/actions/setup-r@v2
-      #   with:
-      #     r-version: '4.2.1'
-      #     use-public-rspm: true
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -48,10 +44,6 @@ jobs:
         with:
           ref: "dev"
       - uses: r-lib/actions/setup-pandoc@v2
-      # - uses: r-lib/actions/setup-r@v2
-      #   with:
-      #     r-version: '4.2.1'
-      #     use-public-rspm: true
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -77,10 +69,6 @@ jobs:
       with:
         ref: "dev"
     - uses: r-lib/actions/setup-pandoc@v2
-    - uses: r-lib/actions/setup-r@v2
-      with:
-        r-version: '4.2.1'
-        use-public-rspm: true
     - uses: r-lib/actions/setup-renv@v2
       with:
         cache-version: 2
