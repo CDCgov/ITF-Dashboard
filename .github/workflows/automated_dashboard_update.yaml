@@ -20,7 +20,9 @@ jobs:
           ref: "master"
       - uses: r-lib/actions/setup-pandoc@v2
       - name: Add Rtools to PATH
-        run: SET PATH="%PATH%;C:\rtools40\usr\bin\"
+        run: |
+          $env:PATH += ";C:\rtools40\usr\bin\"
+          $Env:PATH
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -47,7 +49,7 @@ jobs:
           ref: "master"
       - uses: r-lib/actions/setup-pandoc@v2
       - name: Add Rtools to PATH
-        run: SET PATH="%PATH%;C:\rtools40\usr\bin\"
+        run: $env:PATH += ";C:\rtools40\usr\bin\"
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -74,7 +76,7 @@ jobs:
         ref: "master"
     - uses: r-lib/actions/setup-pandoc@v2
     - name: Add Rtools to PATH
-      run: SET PATH="%PATH%;C:\rtools40\usr\bin\"
+      run: $env:PATH += ";C:\rtools40\usr\bin\"
     - uses: r-lib/actions/setup-renv@v2
       with:
         cache-version: 2
