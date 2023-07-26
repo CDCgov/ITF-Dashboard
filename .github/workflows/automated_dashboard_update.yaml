@@ -27,6 +27,7 @@ jobs:
         run:
           echo $env:GITHUB_PATH
           echo $env:Path
+          where bash
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
