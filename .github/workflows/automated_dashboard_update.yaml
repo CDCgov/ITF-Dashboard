@@ -19,10 +19,14 @@ jobs:
         with:
           ref: "master"
       - uses: r-lib/actions/setup-pandoc@v2
-      - name: Set Rtools on PATH
-        run: |
-          echo "C:\\rtools42\\usr\\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "C:\\rtools42\\x86_64-w64-mingw32.static.posix\\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - uses: beansrowning/actions/setup-r@c738d3faded4aa50a6f7ac2925f2278f6c5dcf70
+        with:
+          r-version: '4.2.1'
+          use-public-rspm: true
+      - name: Checking output PATH
+        run:
+          echo $env:GITHUB_PATH
+          echo $env:Path
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -48,10 +52,10 @@ jobs:
         with:
           ref: "master"
       - uses: r-lib/actions/setup-pandoc@v2
-      - name: Set Rtools on PATH
-        run: |
-          echo "C:\\rtools42\\usr\\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "C:\\rtools42\\x86_64-w64-mingw32.static.posix\\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - uses: beansrowning/actions/setup-r@c738d3faded4aa50a6f7ac2925f2278f6c5dcf70
+        with:
+          r-version: '4.2.1'
+          use-public-rspm: true
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -77,10 +81,10 @@ jobs:
       with:
         ref: "master"
     - uses: r-lib/actions/setup-pandoc@v2
-    - name: Set Rtools on PATH
-      run: |
-        echo "C:\\rtools42\\usr\\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-        echo "C:\\rtools42\\x86_64-w64-mingw32.static.posix\\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+    - uses: beansrowning/actions/setup-r@c738d3faded4aa50a6f7ac2925f2278f6c5dcf70
+      with:
+        r-version: '4.2.1'
+        use-public-rspm: true
     - uses: r-lib/actions/setup-renv@v2
       with:
         cache-version: 2
