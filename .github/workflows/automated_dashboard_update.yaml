@@ -19,10 +19,12 @@ jobs:
         with:
           ref: "master"
       - uses: r-lib/actions/setup-pandoc@v2
-      - uses: beansrowning/actions/setup-r@c738d3faded4aa50a6f7ac2925f2278f6c5dcf70
-        with:
-          r-version: '4.2.1'
-          use-public-rspm: true
+      - name: Assigning Rtools, GS, and R to PATH
+        run: |
+          echo "C:\program files\gs\gs10.00.0\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "C:\rtools40\ucrt64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "C:\rtools40\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "C:\R\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -48,10 +50,12 @@ jobs:
         with:
           ref: "master"
       - uses: r-lib/actions/setup-pandoc@v2
-      - uses: beansrowning/actions/setup-r@c738d3faded4aa50a6f7ac2925f2278f6c5dcf70
-        with:
-          r-version: '4.2.1'
-          use-public-rspm: true
+      - name: Assigning Rtools, GS, and R to PATH
+        run: |
+          echo "C:\program files\gs\gs10.00.0\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "C:\rtools40\ucrt64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "C:\rtools40\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "C:\R\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -77,10 +81,12 @@ jobs:
       with:
         ref: "master"
     - uses: r-lib/actions/setup-pandoc@v2
-    - uses: beansrowning/actions/setup-r@c738d3faded4aa50a6f7ac2925f2278f6c5dcf70
-      with:
-        r-version: '4.2.1'
-        use-public-rspm: true
+    - name: Assigning Rtools, GS, and R to PATH
+      run: |
+        echo "C:\program files\gs\gs10.00.0\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        echo "C:\rtools40\ucrt64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        echo "C:\rtools40\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        echo "C:\R\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
     - uses: r-lib/actions/setup-renv@v2
       with:
         cache-version: 2
