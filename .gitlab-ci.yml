@@ -4,13 +4,18 @@ stages:
   - process
   - publish
 
-.standup:
+default:
+  cache:
+    key:
+      files:
+        - renv.lock
+    paths:
+      - renv/
   before_script:
     - Rscript -e "renv::restore()"
 
 internal:
   stage: process
-  extends: .standup
   tags:
    - runner1
   script:
@@ -18,7 +23,6 @@ internal:
 
 external:
   stage: process
-  extends: .standup
   tags:
   - runner1
   script:
@@ -26,7 +30,6 @@ external:
 
 publish:
   stage: publish
-  extends: .standup
   needs: ["internal", "external"]
   tags:
   - runner1
