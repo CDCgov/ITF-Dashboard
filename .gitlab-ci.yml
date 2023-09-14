@@ -12,7 +12,7 @@ default:
     paths:
       - renv/
   before_script:
-    - apt-get install -y --no-install-recommends libudunits2-dev
+    - apt-get update && apt-get install -y --no-install-recommends libudunits2-dev
     - Rscript -e "renv::restore()"
 
 internal:
