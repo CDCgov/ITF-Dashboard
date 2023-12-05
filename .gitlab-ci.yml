@@ -13,6 +13,7 @@ default:
       - renv/
   before_script:
     - Rscript -e "renv::restore()"
+    - Rscript -e "renv::repair()"
 
 internal:
   stage: process
