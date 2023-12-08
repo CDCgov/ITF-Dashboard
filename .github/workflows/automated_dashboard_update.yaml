@@ -10,7 +10,8 @@ name: "ITF Internal Dashboard Refresh"
 
 jobs:
   itf-dashboard:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    container: rocker/geospatial:4.3
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
@@ -18,13 +19,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: "master"
-      - uses: r-lib/actions/setup-pandoc@v2
-      - name: Assigning Rtools, GS, and R to PATH
-        run: |
-          echo "C:\program files\gs\gs10.00.0\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "C:\rtools40\ucrt64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "C:\rtools40\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "C:\R\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -41,7 +35,8 @@ jobs:
           path: itf_dashboard/output/*.csv
 
   covid-data-tracker:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    container: rocker/geospatial:4.3
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
@@ -49,13 +44,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: "master"
-      - uses: r-lib/actions/setup-pandoc@v2
-      - name: Assigning Rtools, GS, and R to PATH
-        run: |
-          echo "C:\program files\gs\gs10.00.0\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "C:\rtools40\ucrt64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "C:\rtools40\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "C:\R\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
@@ -80,16 +68,6 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: "master"
-    - uses: r-lib/actions/setup-pandoc@v2
-    - name: Assigning Rtools, GS, and R to PATH
-      run: |
-        echo "C:\program files\gs\gs10.00.0\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-        echo "C:\rtools40\ucrt64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-        echo "C:\rtools40\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-        echo "C:\R\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-    - uses: r-lib/actions/setup-renv@v2
-      with:
-        cache-version: 2
     # Download data from the data pull runs
     - uses: actions/download-artifact@master
       with:
@@ -100,6 +78,10 @@ jobs:
         name: covid-data-tracker
         path: covid_data_tracker/output/
     # Publish it to Data Lake
+    - name: Set Up Publish R Deps
+      run: |
+        RScript -e "install.packages('pak')"
+        RScript -e "pak::pkg_install(c('AzureStor', 'AzureRMR'))"
     - name: Publish to ADLS
       env:
         _R_CHECK_CRAN_INCOMING_REMOTE_: false
