@@ -82,7 +82,7 @@ jobs:
       run: |
         install.packages('pak')
       shell: Rscript {0}
-      name: Install Minimal Publish Deps
+    - name: Install Minimal Publish Deps
       run: |
         pak::pkg_install(c('AzureStor', 'AzureRMR'))
       shell: Rscript {0}
