@@ -77,7 +77,12 @@ jobs:
       with:
         name: covid-data-tracker
         path: covid_data_tracker/output/
-    # Publish it to Data Lake
+    - name: Assigning Rtools, GS, and R to PATH
+      run: |
+        echo "C:\program files\gs\gs10.00.0\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        echo "C:\rtools40\ucrt64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        echo "C:\rtools40\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        echo "C:\R\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
     - name: Install {pak}
       run: |
         install.packages('pak')
