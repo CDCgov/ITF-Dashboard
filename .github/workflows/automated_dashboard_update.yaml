@@ -78,10 +78,14 @@ jobs:
         name: covid-data-tracker
         path: covid_data_tracker/output/
     # Publish it to Data Lake
-    - name: Set Up Publish R Deps
+    - name: Install {pak}
       run: |
-        RScript -e "install.packages('pak')"
-        RScript -e "pak::pkg_install(c('AzureStor', 'AzureRMR'))"
+        install.packages('pak')
+      shell: Rscript {0}
+      name: Install Minimal Publish Deps
+      run: |
+        pak::pkg_install(c('AzureStor', 'AzureRMR'))
+      shell: Rscript {0}
     - name: Publish to ADLS
       env:
         _R_CHECK_CRAN_INCOMING_REMOTE_: false
