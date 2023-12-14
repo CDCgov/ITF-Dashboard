@@ -69,11 +69,11 @@ jobs:
       with:
         ref: "master"
     # Download data from the data pull runs
-    - uses: actions/download-artifact@master
+    - uses: actions/download-artifact@v3
       with:
         name: itf-dashboard
         path: itf_dashboard/output/
-    - uses: actions/download-artifact@master
+    - uses: actions/download-artifact@v3
       with:
         name: covid-data-tracker
         path: covid_data_tracker/output/
