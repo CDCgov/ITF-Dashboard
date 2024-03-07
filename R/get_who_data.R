@@ -53,7 +53,8 @@ function(rfunctions.dir, df_country_date){
     ungroup()
   
   w <- w %>%
-    mutate(date = as.Date(date),
+    mutate(#date = as.Date(date), ### ---- 6-MAR-2024: modifying date to new format (%d/%m/%y)
+           date = as.Date(date, format = "%d/%m/%y"), 
            iso2code = Country_code)
   
   #Expand the time series so all countries have the same number of records
