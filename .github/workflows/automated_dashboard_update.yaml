@@ -16,7 +16,7 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: "master"
       - uses: r-lib/actions/setup-renv@v2
@@ -29,7 +29,7 @@ jobs:
           source("itf_dashboard/0_output_data.R")
         shell: Rscript {0}
       # Upload results for later
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: itf-dashboard
           path: itf_dashboard/output/*.csv
@@ -54,7 +54,7 @@ jobs:
           source("covid_data_tracker/0_output_data.R")
         shell: Rscript {0}
       # Upload results for later
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: covid-data-tracker
           path: covid_data_tracker/output/*.csv
@@ -65,15 +65,15 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         ref: "master"
     # Download data from the data pull runs
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: itf-dashboard
         path: itf_dashboard/output/
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: covid-data-tracker
         path: covid_data_tracker/output/
